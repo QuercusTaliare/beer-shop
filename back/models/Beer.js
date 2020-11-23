@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const beerSchema = new Schema({
   name: String,
-  price: Number,
+  price: String,
   image: String
 })
 
