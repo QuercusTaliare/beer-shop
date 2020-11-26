@@ -5,11 +5,12 @@
 //
 
 import { useEffect, useContext } from 'react';
+
 import { BeerContext } from '../context/BeerContext';
 
 const useBeers = () => {
 
-  const url = 'https://sampleapis.com/beers/api/ale';
+  const url = process.env.REACT_APP_API_URL;
 
   const [beers, setBeers] = useContext(BeerContext)
 
@@ -22,9 +23,10 @@ const useBeers = () => {
 
     const fetchBeers = async () => {
 
-      const res = await fetch(url, {
+      const res = await fetch(`/beer`, {
         method: 'Get',
         headers: {
+          'Accept': 'application/json',
           'Content-Type': 'application/json'
         }
       })

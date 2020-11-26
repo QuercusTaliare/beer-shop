@@ -16,9 +16,10 @@ const Shop = () => {
 				<h2>Shop</h2>
 				<ul>
 					{beers.map(beer => (
-						<li>
+						<li key={beer._id}>
 							<h3>{beer.name}</h3>
 							<p>{beer.price}</p>
+							<button>Add To Cart</button>
 						</li>
 					))}
 				</ul>
