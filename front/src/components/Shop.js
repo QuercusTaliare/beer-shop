@@ -6,9 +6,25 @@ import { BeerContext } from "../context/BeerContext";
 
 const Shop = () => {
 
+	// Make API call and load inventory into context, if not already loaded
 	useBeers();
 
 	const [beers] = useContext(BeerContext);
+
+	const addToCart = (beer) => {
+		
+		// TODO: POST request to add a beer to the cart
+		// fetch(`${process.env.REACT_APP_API_URL}/cart`, {
+		// 	method: 'POST',
+		// 	headers: {
+		// 		'Content-Type': 'application/json'
+		// 	},
+		// 	body: JSON.stringify({
+
+		// 	})
+		// })
+
+	}
 
 	return (
 		<>
@@ -19,7 +35,7 @@ const Shop = () => {
 						<li key={beer._id}>
 							<h3>{beer.name}</h3>
 							<p>{beer.price}</p>
-							<button>Add To Cart</button>
+							<button onClick={() => { addToCart(beer) }}>Add To Cart</button>
 						</li>
 					))}
 				</ul>
