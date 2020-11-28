@@ -15,7 +15,6 @@ const Shop = () => {
 		
 		const beerId = beer._id
 
-		// TODO: POST request to add a beer to the cart
 		try {
 
 			const res = await fetch('/cart/5fc26e8c97f4e77ed19cd77a', {
@@ -29,7 +28,9 @@ const Shop = () => {
 			})
 
 		} catch (error) {
+
 			console.log(error);
+		
 		}
 		
 

@@ -4,6 +4,9 @@ const router = express.Router();
 
 const Cart = require('../models/Cart');
 
+// Get all carts
+// GET request
+
 router.get('/', (req, res) => {
 
   Cart
@@ -21,15 +24,14 @@ router.post('/', (req, res) => {
 
   const cart = new Cart()
   
-  // cart.addedBeers = [req.body.id];
-
   cart.save()
     .then(() => res.sendStatus(200))
     .catch((err) => res.sendStatus(500))
+
 })
 
 // Add item to cart
-// POST request
+// PUT request
 
 router.put('/:cartId', (req, res) => {
 
@@ -50,12 +52,12 @@ router.put('/:cartId', (req, res) => {
     },
     // Callback
     // Can be used for handling errors and successes
-    (err, newBeer) => {
+    (err, newCart) => {
       if (err) {
         console.log('error occured')
       } else {
-        console.log(newBeer)
-        res.status(204).send(newBeer)
+        console.log(newCart)
+        res.status(200).send(newCart)
       }
     } 
   )
