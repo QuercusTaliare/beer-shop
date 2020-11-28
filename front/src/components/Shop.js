@@ -11,18 +11,27 @@ const Shop = () => {
 
 	const [beers] = useContext(BeerContext);
 
-	const addToCart = (beer) => {
+	const addToCart = async (beer) => {
 		
-		// TODO: POST request to add a beer to the cart
-		// fetch(`${process.env.REACT_APP_API_URL}/cart`, {
-		// 	method: 'POST',
-		// 	headers: {
-		// 		'Content-Type': 'application/json'
-		// 	},
-		// 	body: JSON.stringify({
+		const beerId = beer._id
 
-		// 	})
-		// })
+		// TODO: POST request to add a beer to the cart
+		try {
+
+			const res = await fetch('/cart/5fc26e8c97f4e77ed19cd77a', {
+				method: 'PUT',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					id: beerId
+				})
+			})
+
+		} catch (error) {
+			console.log(error);
+		}
+		
 
 	}
 
@@ -35,7 +44,11 @@ const Shop = () => {
 						<li key={beer._id}>
 							<h3>{beer.name}</h3>
 							<p>{beer.price}</p>
-							<button onClick={() => { addToCart(beer) }}>Add To Cart</button>
+							<button 
+								onClick={() => { addToCart(beer) }}
+							>
+								Add To Cart
+							</button>
 						</li>
 					))}
 				</ul>

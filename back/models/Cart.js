@@ -3,8 +3,8 @@ const { Schema } = mongoose;
 const Beer = require('../models/Beer');
 
 const cartSchema = new Schema({
-  user: String,
-  beers: [{
+  // user: String,
+  addedBeers: [{
     type: Schema.Types.ObjectId,
     ref: 'Beer'
   }]
