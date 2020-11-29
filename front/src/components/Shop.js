@@ -13,8 +13,6 @@ const Shop = () => {
 
 	const addToCart = async (beer) => {
 		
-		const beerId = beer._id
-
 		try {
 
 			const res = await fetch('/cart/5fc26e8c97f4e77ed19cd77a', {
@@ -23,7 +21,7 @@ const Shop = () => {
 					'Content-Type': 'application/json'
 				},
 				body: JSON.stringify({
-					id: beerId
+					beerId: beer._id
 				})
 			})
 

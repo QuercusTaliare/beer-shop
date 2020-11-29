@@ -44,7 +44,7 @@ router.put('/:cartId', (req, res) => {
     // Update
     // push the beerId into the addedBeers array
     { 
-      $push: { addedBeers: req.body.id },
+      $push: { addedBeers: req.body.beerId },
     },
     // If it finds no document with the _id, then create one
     {
@@ -66,5 +66,21 @@ router.put('/:cartId', (req, res) => {
 
 // Delete item from cart
 // DELETE request
+router.delete('/:cartId', (req, res) => {
+  
+  Cart.findByIdAndDelete(
+    // Beer id
+    req.params.id,
+    // Callback
+    (err) => {
+      if (err) {
+        console.log(err)
+      } else {
+        console.log("successful deletion!")
+      }
+    }
+     
+  )
+})
 
 module.exports = router;

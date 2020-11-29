@@ -26,6 +26,12 @@ const Cart = () => {
 
   }, [])
 
+  const deleteBeer = () => {
+
+    // Make DELETE request to the server
+
+  }
+
   return (
     <Layout>
       <h2>Cart</h2>
@@ -34,6 +40,7 @@ const Cart = () => {
           <li key={`${beer._id}`}>
             <h3>{beer.name}</h3>
             <p>{beer.price}</p>
+            <button type="button" onClick={deleteBeer}>X</button>
           </li>  
         ))}
       </ul>
