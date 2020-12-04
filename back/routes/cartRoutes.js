@@ -68,15 +68,20 @@ router.put('/:cartId', (req, res) => {
 // DELETE request
 router.delete('/:cartId', (req, res) => {
   
-  Cart.findByIdAndDelete(
-    // Beer id
-    req.params.id,
+  Cart.findByIdAndUpdate(
+    // Cart id
+    req.params.cartId,
+    // Remove beer from cart
+    {
+      $pull: { addedBeers: req.body.beerId }
+    },
     // Callback
-    (err) => {
+    (err, newCart) => {
       if (err) {
         console.log(err)
       } else {
         console.log("successful deletion!")
+        res.status(200).send(newCart)
       }
     }
      
