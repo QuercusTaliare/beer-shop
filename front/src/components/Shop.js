@@ -11,7 +11,7 @@ const Shop = () => {
 
 	const [beers] = useContext(BeerContext);
 
-	const addToCart = async (beer) => {
+	const oldAddToCart = async (beer) => {
 		
 		try {
 
@@ -32,6 +32,27 @@ const Shop = () => {
 		}
 		
 
+	}
+
+	const addToCart = async (beer) => {
+
+		try {
+
+			const res = await fetch('/addedBeer', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					beerId: beer._id
+				})
+			})
+
+		} catch (err) {
+
+			console.log(err);
+
+		}
 	}
 
 	return (

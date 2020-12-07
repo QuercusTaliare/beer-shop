@@ -4,17 +4,14 @@ import Layout from "./Layout";
 const Cart = () => {
 
   const [cart, setCart] = useState([]);
+  const [addedBeers, setAddedBeers] = useState([])
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
 
-    if(isDeleting) {
-      return
-    }
+    const fetchAddedBeers = async () => {
 
-    const fetchCart = async () => {
-
-      const res = await fetch('/cart', {
+      const res = await fetch('/addedBeer', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -24,14 +21,20 @@ const Cart = () => {
       const data = await res.json();
 
       if (data.length) {
-        setCart(data[0].addedBeers);
+        setAddedBeers(data);
       }
+
+      console.log(addedBeers);
 
     }
 
-    fetchCart();
+    fetchAddedBeers();
 
-  }, [isDeleting])
+  }, [])
+
+
+
+
 
   const deleteBeer = async (beer) => {
 
@@ -62,13 +65,12 @@ const Cart = () => {
   return (
     <Layout>
       <h2>Cart</h2>
+
       <ul>
-        {cart.map(beer => (
-          <li key={`${beer._id}`}>
-            <h3>{beer.name}</h3>
-            <p>{beer.price}</p>
-            <button type="button" onClick={() => { deleteBeer(beer) }}>X</button>
-          </li>  
+        {addedBeers.map(addedBeer => (
+          <li key={addedBeer.beer._id}>
+            <h3>{addedBeer.beer.name}</h3>
+          </li>
         ))}
       </ul>
     </Layout>

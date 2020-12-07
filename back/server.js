@@ -1,6 +1,7 @@
 const express = require('express');
 const cartRoutes = require('./routes/cartRoutes');
 const beerRoutes = require('./routes/beerRoutes');
+const addedBeerRoutes = require('./routes/addedBeerRoutes');
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use(express.json({ extended: false }));
 
 app.use('/beer', beerRoutes);
 app.use('/cart', cartRoutes);
+app.use('/addedBeer', addedBeerRoutes);
 
 app.listen(4000, () => {
   console.log('The server is running at port 4000');
