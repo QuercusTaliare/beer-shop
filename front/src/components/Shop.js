@@ -39,7 +39,7 @@ const Shop = () => {
 		try {
 
 			const res = await fetch('/addedBeer', {
-				method: 'POST',
+				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json'
 				},
@@ -51,8 +51,9 @@ const Shop = () => {
 		} catch (err) {
 
 			console.log(err);
-
+			
 		}
+
 	}
 
 	return (

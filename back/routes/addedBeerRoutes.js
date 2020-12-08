@@ -27,4 +27,20 @@ router.post('/', (req, res) => {
 
 })
 
+router.put('/', (req, res) => {
+
+  const beerId = { beer: req.body.beerId };
+  const update = { $inc: { quantity: +1 } };
+  const options = { upsert: true };
+
+  AddedBeer.findOneAndUpdate(beerId, update, options, (err, result) => {
+    if (err) {
+      res.status(500).send(error);
+    } else {
+      res.status(200).send(result);
+    }
+  })
+
+})
+
 module.exports = router;
