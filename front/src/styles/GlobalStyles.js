@@ -26,10 +26,13 @@ const GlobalStyles = createGlobalStyle`
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Oswald', serif;
     margin: 0;
+    font-weight: 400;
   }
 
+  h1,
   h2 {
     font-size: 5rem;
+    padding: 2rem 0;
   }
 
   a {

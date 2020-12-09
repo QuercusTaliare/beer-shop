@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Layout from "./Layout";
+import { BeerListStyles, BeerStyles } from './Shop';
 
 const Cart = () => {
 
@@ -66,16 +67,17 @@ const Cart = () => {
     <Layout>
       <h2>Cart</h2>
 
-      <ul>
+      <BeerListStyles>
         {addedBeers.map(addedBeer => (
-          <li key={addedBeer.beer._id}>
+          <BeerStyles key={addedBeer.beer._id}>
             <h3>{addedBeer.beer.name}</h3>
             <img src={addedBeer.beer.image} alt={addedBeer.beer.name} />
             <p>{addedBeer.beer.price}</p>
             <p>Quantity: {addedBeer.quantity}</p>
-          </li>
+            <button className="button">Delete</button>
+          </BeerStyles>
         ))}
-      </ul>
+      </BeerListStyles>
     </Layout>
   )
 }
