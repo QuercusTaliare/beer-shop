@@ -70,6 +70,7 @@ const Cart = () => {
         {addedBeers.map(addedBeer => (
           <li key={addedBeer.beer._id}>
             <h3>{addedBeer.beer.name}</h3>
+            <img src={addedBeer.beer.image} alt={addedBeer.beer.name} />
             <p>{addedBeer.beer.price}</p>
             <p>Quantity: {addedBeer.quantity}</p>
           </li>
