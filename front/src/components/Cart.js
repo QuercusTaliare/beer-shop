@@ -24,9 +24,7 @@ const Cart = () => {
       if (data.length) {
         setAddedBeers(data);
       }
-
-      console.log(addedBeers);
-
+      
     }
 
     fetchAddedBeers();
@@ -45,7 +43,7 @@ const Cart = () => {
 
     try { 
 
-      const res = await fetch('/cart/5fc26e8c97f4e77ed19cd77a', {
+      const res = await fetch('/addedBeer', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
@@ -74,7 +72,12 @@ const Cart = () => {
             <img src={addedBeer.beer.image} alt={addedBeer.beer.name} />
             <p>{addedBeer.beer.price}</p>
             <p>Quantity: {addedBeer.quantity}</p>
-            <button className="button">Delete</button>
+            <button 
+              className="button"
+              onClick={() => { deleteBeer(addedBeer) }}
+            >
+              Delete
+            </button>
           </BeerStyles>
         ))}
       </BeerListStyles>

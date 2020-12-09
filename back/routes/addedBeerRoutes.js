@@ -43,4 +43,19 @@ router.put('/', (req, res) => {
 
 })
 
+router.delete('/', (req, res) => {
+
+  const beerId = { beer: req.body.beerId };
+  const remove = { $pull: beerId };
+
+  AddedBeer.findOneAndUpdate(beerId, remove, (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.status(200).send(result);
+    }
+  })
+
+})
+
 module.exports = router;
