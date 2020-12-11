@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import Layout from "./Layout";
-import { BeerListStyles, BeerStyles } from './Shop';
+import { BeerListStyles, BeerStyles } from '../styles/BeersStyles';
 
 const Cart = () => {
 
-  const [cart, setCart] = useState([]);
   const [addedBeers, setAddedBeers] = useState([])
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -21,21 +20,19 @@ const Cart = () => {
 
       const data = await res.json();
 
-      if (data.length) {
-        setAddedBeers(data);
-      }
+      setAddedBeers(data);
       
     }
 
     fetchAddedBeers();
 
-  }, [])
+  }, [isDeleting])
 
 
 
 
 
-  const deleteBeer = async (beer) => {
+  const deleteBeer = async (addedBeer) => {
 
     // Make DELETE request to the server
 
@@ -49,7 +46,7 @@ const Cart = () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          beerId: beer._id
+          beerId: addedBeer.beer._id
         })
       })
 
