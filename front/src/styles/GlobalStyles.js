@@ -49,9 +49,10 @@ const GlobalStyles = createGlobalStyle`
     padding: 1.2rem;
     border-radius: 4px;
     &:hover,
-    &:active {
-      color: var(--white);
+    &:focus {
+      color: var(--primary);
       cursor: pointer;
+      outline: dashed 3px var(--primary);
     }
   }
 

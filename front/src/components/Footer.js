@@ -3,6 +3,14 @@ import styled from 'styled-components';
 const FooterStyles = styled.footer`
   background: var(--secondary);
   padding: 2rem;
+
+  a {
+    &:hover,
+    &:focus {
+      color: var(--primary);
+      outline: dashed 3px var(--highlight);
+    }
+  }
 `;
 
 const Footer = () => {
