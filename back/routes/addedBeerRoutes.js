@@ -22,8 +22,8 @@ router.post('/', (req, res) => {
 
   addedBeer
     .save()
-    .then(() => res.sendStatus(200))
-    .catch((err) => res.sendStatus(500))
+    .then(() => res.status(200).send({ message: "success" }))
+    .catch((err) => res.status(500).send(err))
 
 })
 
@@ -46,7 +46,6 @@ router.put('/', (req, res) => {
 router.delete('/', (req, res) => {
 
   const beerId = { beer: req.body.beerId };
-  const remove = { $pull: beerId };
 
   AddedBeer.findOneAndRemove(beerId, (err, result) => {
     if (err) {

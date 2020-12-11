@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const Beer = require('../models/Beer');
 
 const addedBeerSchema = new Schema({
   beer: {

@@ -27,7 +27,6 @@ mongoose
 app.use(express.json({ extended: false }));
 
 app.use('/beer', beerRoutes);
-app.use('/cart', cartRoutes);
 app.use('/addedBeer', addedBeerRoutes);
 
 app.listen(4000, () => {
