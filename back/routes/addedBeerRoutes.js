@@ -35,7 +35,7 @@ router.put('/', (req, res) => {
 
   AddedBeer.findOneAndUpdate(beerId, update, options, (err, result) => {
     if (err) {
-      res.status(500).send(error);
+      res.status(500).send(err);
     } else {
       res.status(200).send(result);
     }

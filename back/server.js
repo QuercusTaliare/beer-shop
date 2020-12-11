@@ -1,5 +1,4 @@
 const express = require('express');
-const cartRoutes = require('./routes/cartRoutes');
 const beerRoutes = require('./routes/beerRoutes');
 const addedBeerRoutes = require('./routes/addedBeerRoutes');
 
