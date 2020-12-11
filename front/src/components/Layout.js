@@ -8,8 +8,6 @@ const WrapperStyles = styled.div`
   max-width: 1000px;
   padding: 1rem;
 
-  
-
 `;
 
 const ContainerStyles = styled.div`
